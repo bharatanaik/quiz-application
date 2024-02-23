@@ -1,4 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 <a href="/quiz/create" class="btn btn-success"><b>Create Quiz</b></a>
+
+<div class="row row-cols-md-3 my-3">
+    {% for quiz in quizzes %}
+        <div class="card">
+            <div class="card-body">
+                <p><b>{{ quiz[1] }}</b></p>
+                <ul>
+                    <li>Starts at: {{quiz[2]}}</li>
+                    <li>Duration: {{quiz[3] | duration_format}} </li>
+                    <li>No. of questions: {{quiz[4]}}</li>
+                </ul>
+                <a class="btn btn-outline-success" href="/quiz/attend/{{quiz[0]}}">Attend Quiz</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 {% endblock content %}
