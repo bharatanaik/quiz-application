@@ -1,11 +1,10 @@
 # importing necessary packages
-from flask import Flask, render_template, request, g, flash
-from config import SECRET_KEY
+from flask import Flask, render_template, request
 from database import Quiz
 
 app = Flask(__name__)
 
-app.secret_key = SECRET_KEY
+app.secret_key = "c$7cdap2cs84d+3&p=c*#z)@g(7&ds5e47d9&1%kdx@dsiwnca"
 
 Quiz().init_db()
 

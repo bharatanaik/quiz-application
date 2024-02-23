@@ -1,12 +1,11 @@
 from datetime import datetime
 import json, random, sqlite3
-from config import DATABASE
 from flask import flash, g
 
 
 class Quiz:
     def __init__(self) -> None:
-        self.conn = sqlite3.connect(DATABASE)
+        self.conn = sqlite3.connect("db.sqlite3")
         self.cur = self.conn.cursor()
         self.cur.execute("PRAGMA foreign_keys = ON;")
         self.init_db()
