@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="card">
+    <div class="card-header">
+        <h1>Statistics</h1>
+    </div>
+    <div class="card-body">
+        <table class="table bordered">
+            <tr><th>Name</th><th>Email</th><th>Score</th> <th>Time Taken (In seconds)</th></tr>
+            {% for row in stats %}
+                <tr><td>{{ row[0] }} </td><td>{{ row[3] }}</td><td>{{ row[1] }}</td><td>{{ row[2] |duration_format}}</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+
+{% endblock content %}

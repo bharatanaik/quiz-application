@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+
+
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header"><h1 class="card-title">Login Page</h1></div>
+            <div class="card-body">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class=flashes>
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% endwith %}
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="id_email" class="form-label"><b>Email</b></label>
+                        <input id="id_email" type="email" class="form-control" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <p><span class="form-text">Security Question:</span></p>
+                        <label for="id_age" class="form-label"><b>Enter your Age</b></label>
+                        <input id="id_age" type="number" class="form-control" name="age" required>
+                    </div>
+                    <button class="btn btn-success my-2">Login</button>
+                    <p>If you don't have an account <a href="/register">Register here</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

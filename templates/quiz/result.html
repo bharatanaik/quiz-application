@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h1>{{ result.quiz.title }} Result</h1>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr><th>Name </th><td>{{ result.user.full_name() }}</td></tr>
+                    <tr><th>Quiz title</th><td>{{ result.quiz.title }}</td></tr>
+                    <tr><th>Score</th><td>{{ result.score }}</td></tr>
+                    <tr><th>Time Taken</th><td>{{ result.time_taken }}</td></tr>
+                    <tr><th>Submitted at</th><td>{{ result.submitted_at }}</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

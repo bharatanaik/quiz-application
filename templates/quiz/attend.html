@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        {% if user %}
+            <div class="card m-3">
+                <div class="card-body">
+                    <table class="table">
+                        <tr><td>Name</td><th>{{ user.full_name() }}</th></tr>
+                        <tr><td>Email</td><th>{{ user.email }}</th></tr>
+                        <tr><td>Age</td><th>{{ user.age }}</th></tr>
+                    </table>
+                </div>
+            </div>
+        {% endif %}
+        <div class="text-center sticky-top p-2 fw-bold">
+            <span id="remaining-time" class="bg-light rounded-3 my-2"></span>
+        </div>
+        <form  method="post">
+            {% for id, question in questions.items() %}
+            <div class="card mb-3">
+                <p class="card-title fw-bold m-2 text-success">{{ loop.index }}) {{ question.question_text }}</p>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for answer in question.answers %}
+                        <li class="list-group-item"><input type="radio" class="form-check-input me-3"
+                                name="{{id}}" value="{{ answer.answer_id }}" required>{{ answer.answer_text }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+            <p class="text-center"><button class="btn btn-success">Submit Quiz</button></p>
+        </form>
+    </div>
+</div>
+
+
+
+<script>
+    const quiz = JSON.parse('{{json_data|tojson}}');
+    quiz.starts_at = new Date(quiz.starts_at).getTime();
+    const endTime = quiz.starts_at + quiz.time_seconds * 1000;
+    function updateProgressBar() {
+        const currentTime = new Date().getTime();
+        const elapsedTime = endTime - currentTime;
+        const remainingHours = Math.floor(elapsedTime / (60 * 60 * 1000));
+        const remainingMinutes = Math.floor((elapsedTime % (60 * 60 * 1000)) / (60 * 1000));
+        const remainingSeconds = Math.floor((elapsedTime % (60 * 1000)) / 1000);
+        document.getElementById('remaining-time').innerHTML = `Time Remaining: ${remainingHours}h ${remainingMinutes}m ${remainingSeconds}s`;
+        if (currentTime >= endTime) {
+        //dhdhdh
+        } else {
+            setTimeout(updateProgressBar, 1000);
+        }
+    }
+    updateProgressBar();
+</script>
+
+
+<script>
+
+</script>
+{% endblock content %}
