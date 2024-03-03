@@ -16,7 +16,7 @@ class Auth(DataBase):
         except sqlite3.IntegrityError:
             flash("User already exists...")
             return False
-        return User(fname, lname, age, email)
+        return User(1, fname, lname, age, email)
     
     def get_user(self, email:str):
         row =  self.cur.execute("SELECT ID,  FNAME, LNAME, AGE, EMAIL FROM USERS WHERE EMAIL = ?", (email, )).fetchone()
