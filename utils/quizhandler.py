@@ -1,7 +1,7 @@
 from utils.auth import Auth
 from utils.database import DataBase 
 from datetime import datetime, timedelta
-from utils.type import Quiz, Result, User
+from utils.type import Quiz, Result
 from flask import Request, session, flash
 import json, random, sqlite3
 

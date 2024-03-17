@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
+
 {% if not user %}
 <div class="alert alert-warning">
     <p>Please login to this application to continue..</p>
@@ -25,11 +26,15 @@
     </div>
     {% endif %}
     
+
+
     <div class="col-md-8">
         {% if user %}
         {% if user.is_admin() %}
         <a href="/quiz/create" class="btn btn-outline-success"><b>Create New Quiz</b></a>        
         {% endif %}
+
+
         {% endif %}
 
             {% for quiz in quizzes %}
@@ -57,4 +62,5 @@
             {% endfor %}
     </div>
 </div>
+
 {% endblock content %}

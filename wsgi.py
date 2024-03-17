@@ -16,8 +16,11 @@ def duration_format(seconds):
 
 QuizHandler().init_db()
 
-
 @app.route("/")
+def home():
+    return render_template("home.html")
+
+@app.route("/dashboard")
 def index():
     quizzes = QuizHandler().list_quiz()
     user = None
@@ -53,7 +56,7 @@ def login():
             if request.args.get("next"):
                 return redirect(request.args.get("next"))
             else:
-                return redirect("/")
+                return redirect("/dashboard")
     return render_template("login.html")
 
 
